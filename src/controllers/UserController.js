@@ -3,13 +3,38 @@
  * Import variable users dari file data/users.js
  */
 // CODE HERE
-
+import users from "../data/users.js";
 /**
  * SARAN TODO3 - TODO5.
  * Tulis dulu solusi tanpa penggunaan promise.
  * Setelah itu refactor dengan menambahkan promise.
  */
+// const formatUser = (title) => {
+//   const usersFormat = users.map((item) => {
+//     const container = {
+//       name: title + " " + item.name,
+//       age: item.age,
+//       major: item.major,
+//     };
 
+//     return container;
+//   });
+//   //   // for (const user of users) {
+//   //   //   const result = {
+//   //   //     name: user.map(function (name) {
+//   //   //       return title + " " + name;
+//   //   //     }),
+//   //   //     age: user.age,
+//   //   //     major: user.major,
+//   //   //   };
+//   //   // console.log(`name : ${title + " " + user.name}`);
+//   //   // console.log(`age : ${user.age}`);
+//   //   // console.log(`major : ${user.major}`);
+//   //   // console.log("    ");
+//   console.log(usersFormat);
+//   //   // }
+// };
+// formatUser("MR/MRS");
 /**
  * TODO 3.
  * Buat function formatUser: Format nama user.
@@ -18,7 +43,22 @@
  * - Gunakan method map untuk format user.
  * - Gunakan promise untuk handle asynchronous.
  */
-const formatUser = (title) => {};
+const formatUser = (title) => {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      const usersFormat = users.map((item) => {
+        const container = {
+          name: title + " " + item.name,
+          age: item.age,
+          major: item.major,
+        };
+
+        return container;
+      });
+      resolve(usersFormat);
+    }, 3000);
+  });
+};
 
 /**
  * TODO 4.
@@ -28,14 +68,27 @@ const formatUser = (title) => {};
  * - Gunakan method find untuk mencari 1 user.
  * - Gunakan promise untuk handle asynchronous.
  */
-const findByName = (name) => {};
+const findByName = (name) => {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      const result = users.find((user) => (user.name = name));
+      resolve(result);
+    }, 2000);
+  });
+};
 
 /**
  * SARAN TODO3 - TODO5.
  * Tulis dulu solusi tanpa penggunaan promise.
  * Setelah itu refactor dengan menambahkan promise.
  */
-
+// const filterByMajor = (major) => {
+//   const result = users.filter(function (user) {
+//     return (user.major = major);
+//   });
+//   console.log(result);
+// };
+// filterByMajor("English");
 /**
  * TODO 5.
  * Buat function filterByMajor: Mencari semua user by major.
@@ -44,10 +97,21 @@ const findByName = (name) => {};
  * - Gunakan method filter untuk mencari semua user.
  * - Gunakan promise untuk handle asynchronous.
  */
-const filterByMajor = (major) => {};
+
+const filterByMajor = (major) => {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      const result = users.filter(function (user) {
+        return (user.major = major);
+      });
+      resolve(result);
+    }, 4000);
+  });
+};
 
 /**
  * TODO 6.
  * Export fungsi: formatUser, findByName, filterByMajor
  */
 // CODE HERE
+export { formatUser, findByName, filterByMajor };

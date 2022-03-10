@@ -3,7 +3,7 @@ import {
   formatUser,
   findByName,
   filterByMajor,
-} from "../src/controllers/UserController";
+} from "../src/controllers/UserController.js";
 
 describe("# Menjalankan Test: Array of Object", () => {
   const keys = ["name", "age", "major"];
