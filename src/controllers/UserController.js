@@ -46,14 +46,15 @@ import users from "../data/users.js";
 const formatUser = (title) => {
   return new Promise(function (resolve, reject) {
     setTimeout(() => {
-      const usersFormat = users.map((item) => {
-        const container = {
-          name: title + " " + item.name,
-          age: item.age,
-          major: item.major,
+      const usersFormat = users.map((user) => {
+        //destructing object user
+        const { name, age, major } = user;
+        return {
+          // kalau key dan valuenya memilikin nama yang sama maka dapet ditulis 1 kali saja seperti contoh dibawah
+          name: `${title} ${name}`,
+          age,
+          major,
         };
-
-        return container;
       });
       resolve(usersFormat);
     }, 3000);
@@ -71,7 +72,7 @@ const formatUser = (title) => {
 const findByName = (name) => {
   return new Promise(function (resolve, reject) {
     setTimeout(() => {
-      const result = users.find((user) => (user.name = name));
+      const result = users.find((user) => user.name == name);
       resolve(result);
     }, 2000);
   });
@@ -101,9 +102,7 @@ const findByName = (name) => {
 const filterByMajor = (major) => {
   return new Promise(function (resolve, reject) {
     setTimeout(() => {
-      const result = users.filter(function (user) {
-        return (user.major = major);
-      });
+      const result = users.filter((user) => user.major == major);
       resolve(result);
     }, 4000);
   });
