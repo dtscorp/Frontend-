@@ -1,7 +1,7 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
-import Movie from "../components/Movie/Movie";
+import Movies from "../components/Movies/Movies";
 import AddMovie from "../components/AddMovieForm/AddMovie";
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
     <div>
       <Navbar />
       <Hero />
-      <Movie />
+      <Movies />
       <AddMovie />
       <Footer />
     </div>
