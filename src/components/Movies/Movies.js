@@ -1,12 +1,9 @@
-import style from "./Movies.module.css";
+import styles from "./Movies.module.css";
 import Movie from "../Movie/Movie";
-import data from "../../utils/constants/data";
-import { useState } from "react";
 import { nanoid } from "nanoid";
-function Movies() {
+function Movies(props) {
   // const movies = data;
-
-  const [movies, setMovie] = useState(data);
+  const { movies, setMovie } = props;
 
   function tambahFilm() {
     const movie = {
@@ -14,22 +11,23 @@ function Movies() {
       title: "Raya and the last dragon",
       year: "2021",
       type: "Movie",
-      poster: "https://picsum.photos/200/300",
+      poster: "https://picsum.photos/300/400",
     };
     setMovie([...movies, movie]);
   }
   return (
-    <div className={style.container}>
-      <section className={style.movies}>
-        <h2 className={style.movies__title}>Latest Movies</h2>
-        <div className={style.movie__container}>
-          {movies.map(function (movie) {
-            return <Movie key={movie.id} movie={movie} />;
-          })}
-        </div>
-        {/* {mendabahkan event} */}
-        <button onClick={tambahFilm}>Add movie</button>
-      </section>
+    <div>
+      <div className={styles.container}>
+        <section className={styles.movies}>
+          <h2 className={styles.movies__title}>Latest Movies</h2>
+          <div className={styles.movie__container}>
+            {movies.map((movie) => {
+              return <Movie key={movie.id} movie={movie} />;
+            })}
+          </div>
+          <button onClick={tambahFilm}>Add Movie</button>
+        </section>
+      </div>
     </div>
   );
 }
