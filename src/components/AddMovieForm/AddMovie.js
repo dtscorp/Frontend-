@@ -3,64 +3,91 @@ import { useState } from "react";
 import styles from "./AddMovie.module.css";
 import Alert from "../Alert/Alert";
 function AddMovie(props) {
-  // destructing props
+  // // destructing props
   const { movies, setMovie } = props;
-  // membuat state title and date
-  const [title, setTitle] = useState("");
+  // // membuat state title and date
+  // const [title, setTitle] = useState("");
 
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
 
-  const [type, setType] = useState("");
+  // const [type, setType] = useState("");
 
-  const [poster, setPoster] = useState("");
+  // const [poster, setPoster] = useState("");
+  const [formData, setFormData] = useState({
+    title: "",
+    date: "",
+    type: "",
+    poster: "",
+  });
+
+  // membuat function Handletitle
+  // function handleTitle(e) {
+  //   setTitle(e.target.value);
+  // }
+  // function handleDate(e) {
+  //   setDate(e.target.value);
+  // }
+  // function handleType(e) {
+  //   setType(e.target.value);
+  // }
+  // function handlePoster(e) {
+  //   setPoster(e.target.value);
+  // }
+  // membuat function handle keseluruhan
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  }
   // membuat state untuk menghandle validasi
   const [isTitleError, setIsTitleError] = useState(false);
   const [isDateError, setIsDateError] = useState(false);
   const [isTypeError, setIsTypeError] = useState(false);
   const [isPosterError, setIsPosterError] = useState(false);
-  // membuat function Handletitle
-  function handleTitle(e) {
-    setTitle(e.target.value);
-  }
-
-  function handleDate(e) {
-    setDate(e.target.value);
-  }
-  function handleType(e) {
-    setType(e.target.value);
-  }
-  function handlePoster(e) {
-    setPoster(e.target.value);
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
+  const { title, date, type, poster } = formData;
+  function validate() {
     if (title === "") {
       setIsTitleError(true);
+      return false;
     } else if (date === "") {
       setIsTitleError(false);
       setIsDateError(true);
+      return false;
     } else if (type === "") {
       setIsTitleError(false);
       setIsDateError(false);
       setIsTypeError(true);
+      return false;
     } else if (poster === "") {
       setIsTitleError(false);
       setIsDateError(false);
       setIsTypeError(false);
       setIsPosterError(true);
+      return false;
     } else {
-      const movie = {
-        id: nanoid,
-        title: title,
-        year: date,
-        type: type,
-        poster: poster,
-      };
-      console.log(movie);
-      setMovie([...movies, movie]);
       setIsTitleError(false);
       setIsDateError(false);
+      setIsTypeError(false);
+      setIsPosterError(false);
+      return true;
     }
+  }
+  function addMovie() {
+    const movie = {
+      id: nanoid,
+      title: title,
+      year: date,
+      type: type,
+      poster: poster,
+    };
+    console.log(movie);
+    setMovie([...movies, movie]);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    validate() && addMovie();
   }
   return (
     <div className={styles.container}>
@@ -80,7 +107,7 @@ function AddMovie(props) {
                 Title
               </label>
               <input
-                onChange={handleTitle}
+                onChange={handleChange}
                 id="title"
                 className={styles.form__input}
                 type="text"
@@ -95,7 +122,7 @@ function AddMovie(props) {
                 Date
               </label>
               <input
-                onChange={handleDate}
+                onChange={handleChange}
                 id="date"
                 className={styles.form__input}
                 type="number"
@@ -111,8 +138,9 @@ function AddMovie(props) {
               </label>
               <select
                 value={type}
-                onChange={handleType}
+                onChange={handleChange}
                 className={styles.form__input}
+                name="type"
               >
                 <option value="">Choose Type</option>
                 <option value="series">Series</option>
@@ -127,7 +155,7 @@ function AddMovie(props) {
                 Poster
               </label>
               <input
-                onChange={handlePoster}
+                onChange={handleChange}
                 id="poster"
                 className={styles.form__input}
                 type="text"
