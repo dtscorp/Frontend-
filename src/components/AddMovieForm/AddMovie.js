@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import { useState } from "react";
 import styles from "./AddMovie.module.css";
 import Alert from "../Alert/Alert";
+import Button from "../UI/button";
 function AddMovie(props) {
   // // destructing props
   const { movies, setMovie } = props;
@@ -166,7 +167,9 @@ function AddMovie(props) {
               {isPosterError && <Alert>The Poster is required</Alert>}
             </div>
             <div>
-              <button className={styles.form__button}>Add Movie</button>
+              <Button variant="secondary" full lg>
+                Add Movie
+              </Button>
             </div>
           </form>
         </div>

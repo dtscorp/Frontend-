@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Style from "./Hero.module.css";
 import { useEffect, useState } from "react";
+import Button from "../UI/button";
+import StyledHero from "./Hore.style";
 
 function Hero() {
   const [movie, SetMovie] = useState("");
@@ -14,22 +15,19 @@ function Hero() {
   useEffect(Fetch, []);
   console.log(movie);
   return (
-    <div className={Style.container}>
-      <section className={Style.hero}>
-        <div className={Style.hero__left}>
-          <h2 className={Style.hero__title}>{movie.Title}</h2>
-          <h3 className={Style.hero__genre}>Genre:{movie.Genre}</h3>
-          <p className={Style.hero__description}>{movie.Plot}</p>
+    <StyledHero>
+      <section>
+        <div className="hero__left">
+          <h2>{movie.Title}</h2>
+          <h3>Genre:{movie.Genre}</h3>
+          <p>{movie.Plot}</p>
+          <Button variant="primary">Watch Movie</Button>
         </div>
-        <div className={Style.hero__right}>
-          <img
-            className={Style.hero__image}
-            src={movie.Poster}
-            alt={movie.Title}
-          />
+        <div className="hero__right">
+          <img src={movie.Poster} alt={movie.Title} />
         </div>
       </section>
-    </div>
+    </StyledHero>
   );
 }
 export default Hero;
