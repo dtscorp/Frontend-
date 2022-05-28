@@ -8,7 +8,7 @@ function Home() {
   return (
     <div>
       <Hero />
-      <Movies movies={movies} setMovie={setMovie} />
+      <Movies movies={movies} setMovie={setMovie} title="Latest Movies" />
       <AddMovie movies={movies} setMovie={setMovie} />
     </div>
   );
