@@ -5,16 +5,17 @@ import { useParams } from "react-router-dom";
 import DetailMovie from "../../components/Detail";
 import Movies from "../../components/Movies/Movies.js";
 function Detail() {
-  const params = useParams();
+  const { id } = useParams();
   const [movies, setMovies] = useState([]);
   const API_KEY = process.env.REACT_APP_API_KEY;
+  const title = "Recommendations";
 
   useEffect(() => {
     getRecommendationMovies();
-  }, []);
+  }, [id]);
 
   async function getRecommendationMovies() {
-    const URL = `https://api.themoviedb.org/3/movie/${params.id}/recommendations?api_key=${API_KEY}}`;
+    const URL = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`;
     const response = await axios(URL);
     setMovies(response.data.results);
   }
@@ -22,7 +23,7 @@ function Detail() {
   return (
     <>
       <DetailMovie />
-      <Movies movies={movies} />
+      <Movies movies={movies} title={title} />
     </>
   );
 }

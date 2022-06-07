@@ -2,12 +2,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ENDPOINT from "../../utils/constants/endpoint";
 import Button from "../UI/button";
 import StyledDetailMovie from "./Detail.styled";
 
 function DetailMovie() {
   const params = useParams();
-  const API_KEY = process.env.REACT_APP_API_KEY;
+  // const API_KEY = process.env.REACT_APP_API_KEY;
   const [movie, setMovie] = useState("");
   const genres = movie && movie.genres.map((genre) => genre.name).join(", ");
   const trailer =
@@ -15,11 +16,12 @@ function DetailMovie() {
 
   useEffect(() => {
     getDetailMovie();
-  }, []);
+  }, [params.id]);
 
   async function getDetailMovie() {
-    const URL = `https://api.themoviedb.org/3/movie/${params.id}?api_key=${API_KEY}&append_to_response=videos`;
-    const response = await axios(URL);
+    // const URL = `https://api.themoviedb.org/3/movie/${params.id}?api_key=${API_KEY}&append_to_response=videos`;
+    const response = await axios(ENDPOINT.DETAIL(params.id));
+    // const response = await axios(URL);
     setMovie(response.data);
   }
   console.log(movie);
