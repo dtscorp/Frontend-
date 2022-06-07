@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import StyledMovie from "./Movie.Style";
 
 function Movie(props) {
@@ -10,7 +11,10 @@ function Movie(props) {
         }
         alt={movie.title}
       />
-      <h3>{movie.title}</h3>
+      <Link to={`/movie/${movie.id}`}>
+        <h3>{movie.title}</h3>
+      </Link>
+
       <p>{movie.year || movie.release_date}</p>
     </StyledMovie>
   );
