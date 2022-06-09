@@ -3,6 +3,7 @@ import StyledMovie from "./Movie.Style";
 
 function Movie(props) {
   const { movie } = props;
+  const year = movie.year || movie.release_date;
   return (
     <StyledMovie>
       <img
@@ -15,7 +16,7 @@ function Movie(props) {
         <h3>{movie.title}</h3>
       </Link>
 
-      <p>{movie.year || movie.release_date}</p>
+      <p>{year.substr(0, 4)}</p>
     </StyledMovie>
   );
 }

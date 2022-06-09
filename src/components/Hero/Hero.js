@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ENDPOINT from "../../utils/constants/endpoint";
 import Button from "../UI/button";
 import StyledHero from "./Hore.style";
 
 function Hero() {
   const [movie, SetMovie] = useState("");
-  const API_KEY = process.env.REACT_APP_API_KEY;
+  // const API_KEY = process.env.REACT_APP_API_KEY;
   const genres = movie && movie.genres.map((genre) => genre.name).join(", ");
   const idTrailer = movie && movie.videos.results[0].key;
   // async function Fetch() {
@@ -16,15 +17,17 @@ function Hero() {
   //   SetMovie(data);
   // }
   async function getTrendingMovies() {
-    const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
-    const response = await axios(url);
-    return response.data.results[0];
+    // const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
+    const response = await axios(ENDPOINT.TRENDING);
+    return response.data.results[
+      Math.floor(Math.random() * response.data.results.length)
+    ];
   }
   async function getDetailMovie() {
     const trendingMovie = await getTrendingMovies();
     const id = trendingMovie.id;
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`;
-    const response = await axios(url);
+    // const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`;
+    const response = await axios(ENDPOINT.HERO(id));
     SetMovie(response.data);
   }
   useEffect(getDetailMovie, []);
