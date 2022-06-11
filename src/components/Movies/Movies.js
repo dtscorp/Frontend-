@@ -1,20 +1,22 @@
 import styles from "./Movies.module.css";
 import Movie from "../Movie/Movie";
-import { nanoid } from "nanoid";
+import { useSelector } from "react-redux";
+// import { nanoid } from "nanoid";
 function Movies(props) {
   // const movies = data;
-  const { movies, setMovie } = props;
+  // const { movies } = props;
 
-  function tambahFilm() {
-    const movie = {
-      id: nanoid,
-      title: "Raya and the last dragon",
-      year: "2021",
-      type: "Movie",
-      poster: "https://picsum.photos/300/400",
-    };
-    setMovie([...movies, movie]);
-  }
+  const movies = useSelector((store) => store.movies.movies);
+  // function tambahFilm() {
+  //   const movie = {
+  //     id: nanoid,
+  //     title: "Raya and the last dragon",
+  //     year: "2021",
+  //     type: "Movie",
+  //     poster: "https://picsum.photos/300/400",
+  //   };
+  //   setMovie([...movies, movie]);
+  // }
   return (
     <div>
       <div className={styles.container}>
@@ -25,7 +27,6 @@ function Movies(props) {
               return <Movie key={movie.id} movie={movie} />;
             })}
           </div>
-          <button onClick={tambahFilm}>Add Movie</button>
         </section>
       </div>
     </div>

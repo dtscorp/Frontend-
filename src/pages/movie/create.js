@@ -1,8 +1,12 @@
+import AddMovie from "../../components/AddMovieForm/AddMovie";
+import Hero from "../../components/Hero/Hero";
+
 function CreateMovie() {
   return (
-    <div>
-      <h1>Halaman Create Movie</h1>
-    </div>
+    <>
+      <Hero />
+      <AddMovie />
+    </>
   );
 }
 export default CreateMovie;

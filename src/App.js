@@ -9,8 +9,11 @@ import { ThemeProvider } from "styled-components";
 import theme from "./utils/constants/theme";
 import GlobalStyle from "./components/GlobalStyle";
 import Detail from "./pages/movie/detail";
+// import { useState } from "react";
+// import data from "./utils/constants/data";
 
 function App() {
+  // const [movies, setMovie] = useState(data);
   return (
     <>
       <ThemeProvider theme={theme}>

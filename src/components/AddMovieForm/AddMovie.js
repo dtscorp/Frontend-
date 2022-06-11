@@ -3,9 +3,15 @@ import { useState } from "react";
 import styles from "./AddMovie.module.css";
 import Alert from "../Alert/Alert";
 import Button from "../UI/button";
-function AddMovie(props) {
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addMovie } from "../../features/moviesSlice";
+function AddMovie() {
+  const navigation = useNavigate();
+  const dispatch = useDispatch();
   // // destructing props
-  const { movies, setMovie } = props;
+  // const { movies, setMovie } = props;
+
   // // membuat state title and date
   // const [title, setTitle] = useState("");
 
@@ -75,7 +81,7 @@ function AddMovie(props) {
       return true;
     }
   }
-  function addMovie() {
+  function submitMovie() {
     const movie = {
       id: nanoid,
       title: title,
@@ -83,12 +89,14 @@ function AddMovie(props) {
       type: type,
       poster: poster,
     };
+    dispatch(addMovie(movie));
     console.log(movie);
-    setMovie([...movies, movie]);
+    // setMovie([...movies, movie]);
+    navigation("/");
   }
   function handleSubmit(e) {
     e.preventDefault();
-    validate() && addMovie();
+    validate() && submitMovie();
   }
   return (
     <div className={styles.container}>
