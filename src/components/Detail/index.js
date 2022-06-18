@@ -24,7 +24,6 @@ function DetailMovie() {
     // const response = await axios(URL);
     setMovie(response.data);
   }
-  console.log(movie);
   return (
     <>
       <StyledDetailMovie>
