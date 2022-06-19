@@ -1,6 +1,5 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
-import styles from "./AddMovie.module.css";
 import Alert from "../Alert/Alert";
 import Button from "../UI/button";
 import { useNavigate } from "react-router-dom";
@@ -123,7 +122,7 @@ function AddMovie() {
               {/* conditional rendering */}
               {isTitleError && <Alert>The Title is Required</Alert>}
             </div>
-            <div className={styles.form__group}>
+            <div className="form__group">
               <label htmlFor="date" className="form__label">
                 Date
               </label>
@@ -138,7 +137,7 @@ function AddMovie() {
               {/* conditional rendering */}
               {isDateError && <Alert>The Date is required</Alert>}
             </div>
-            <div className={styles.form__group}>
+            <div className="form__group">
               <label htmlFor="type" className="form__label">
                 Type
               </label>
@@ -156,7 +155,7 @@ function AddMovie() {
               {/* conditional rendering */}
               {isTypeError && <Alert>The Type is required</Alert>}
             </div>
-            <div className={styles.form__group}>
+            <div className="form__group">
               <label htmlFor="poster" className="form__label">
                 Poster
               </label>
