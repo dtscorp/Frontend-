@@ -1,13 +1,14 @@
-/* Small Screen */
-.container {
-  margin: 5rem auto;
-}
+import Styled from "styled-components";
 
-.movies {
+const StyledMovies = Styled.div`
+/* Small Screen */
+margin: 5rem auto;
+
+section {
   text-align: center;
 }
 
-.movies__title {
+h2 {
   margin-bottom: 1rem;
   font-size: 2.44rem;
   color: #4361ee;
@@ -33,3 +34,7 @@
     max-width: 1200px;
   }
 }
+
+`;
+
+export default StyledMovies;
