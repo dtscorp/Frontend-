@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailMovie from "../../components/Detail";
 import Movies from "../../components/Movies/Movies.js";
+import { updateMovie } from "../../features/moviesSlice";
 import ENDPOINT from "../../utils/constants/endpoint";
 function Detail() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function Detail() {
     // const response = await axios(URL);
     const response = await axios(ENDPOINT.RECOMMENDATION(id));
     // setMovies(response.data.results);
-    dispatch(response.data.results);
+    dispatch(updateMovie(response.data.results));
   }
 
   return (

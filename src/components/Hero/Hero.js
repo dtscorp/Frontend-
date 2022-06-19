@@ -19,9 +19,7 @@ function Hero() {
   async function getTrendingMovies() {
     // const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
     const response = await axios(ENDPOINT.TRENDING);
-    return response.data.results[
-      Math.floor(Math.random() * response.data.results.length)
-    ];
+    return response.data.results[0];
   }
   async function getDetailMovie() {
     const trendingMovie = await getTrendingMovies();

@@ -1,6 +1,7 @@
-import styles from "./Movies.module.css";
+// import styles from "./Movies.module.css";
 import Movie from "../Movie/Movie";
 import { useSelector } from "react-redux";
+import StyledMovies from "./Movies.styled";
 // import { nanoid } from "nanoid";
 function Movies(props) {
   // const movies = data;
@@ -18,18 +19,18 @@ function Movies(props) {
   //   setMovie([...movies, movie]);
   // }
   return (
-    <div>
-      <div className={styles.container}>
-        <section className={styles.movies}>
-          <h2 className={styles.movies__title}>{props.title}</h2>
-          <div className={styles.movie__container}>
+    <StyledMovies>
+      <div>
+        <section>
+          <h2>{props.title}</h2>
+          <div className="movie__container">
             {movies.map((movie) => {
               return <Movie key={movie.id} movie={movie} />;
             })}
           </div>
         </section>
       </div>
-    </div>
+    </StyledMovies>
   );
 }
 export default Movies;
