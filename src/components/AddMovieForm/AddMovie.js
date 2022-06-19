@@ -6,6 +6,7 @@ import Button from "../UI/button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../../features/moviesSlice";
+import StyledAddMovie from "./AddMovie.styled";
 function AddMovie() {
   const navigation = useNavigate();
   const dispatch = useDispatch();
@@ -99,26 +100,22 @@ function AddMovie() {
     validate() && submitMovie();
   }
   return (
-    <div className={styles.container}>
-      <section className={styles.form}>
-        <div className={styles.form__left}>
-          <img
-            className={styles.form__image}
-            src="https://picsum.photos/536/354"
-            alt=""
-          />
+    <StyledAddMovie>
+      <section className="form">
+        <div className="form__left">
+          <img src="https://picsum.photos/536/354" alt="" />
         </div>
-        <div className={styles.form__right}>
-          <h2 className={styles.form__title}>Add Movie Form</h2>
+        <div className="form__right">
+          <h2>Add Movie Form</h2>
           <form onSubmit={handleSubmit}>
-            <div className={styles.form__group}>
-              <label htmlFor="title" className={styles.form__label}>
+            <div className="form__group">
+              <label htmlFor="title" className="form__label">
                 Title
               </label>
               <input
                 onChange={handleChange}
                 id="title"
-                className={styles.form__input}
+                className="form__input"
                 type="text"
                 name="title"
                 value={title}
@@ -127,13 +124,13 @@ function AddMovie() {
               {isTitleError && <Alert>The Title is Required</Alert>}
             </div>
             <div className={styles.form__group}>
-              <label htmlFor="date" className={styles.form__label}>
+              <label htmlFor="date" className="form__label">
                 Date
               </label>
               <input
                 onChange={handleChange}
                 id="date"
-                className={styles.form__input}
+                className="form__input"
                 type="number"
                 name="date"
                 value={date}
@@ -142,13 +139,13 @@ function AddMovie() {
               {isDateError && <Alert>The Date is required</Alert>}
             </div>
             <div className={styles.form__group}>
-              <label htmlFor="type" className={styles.form__label}>
+              <label htmlFor="type" className="form__label">
                 Type
               </label>
               <select
                 value={type}
                 onChange={handleChange}
-                className={styles.form__input}
+                className="form__input"
                 name="type"
               >
                 <option value="">Choose Type</option>
@@ -160,13 +157,13 @@ function AddMovie() {
               {isTypeError && <Alert>The Type is required</Alert>}
             </div>
             <div className={styles.form__group}>
-              <label htmlFor="poster" className={styles.form__label}>
+              <label htmlFor="poster" className="form__label">
                 Poster
               </label>
               <input
                 onChange={handleChange}
                 id="poster"
-                className={styles.form__input}
+                className="form__input"
                 type="text"
                 name="poster"
                 value={poster}
@@ -182,7 +179,7 @@ function AddMovie() {
           </form>
         </div>
       </section>
-    </div>
+    </StyledAddMovie>
   );
 }
 
