@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.92e8068a.css","mappings":"AAAA,4BAEE,aAAc,CADd,gBAAiB,CAEjB,YACF","sources":["components/Container/index.module.css"],"sourcesContent":[".container {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 1rem;\r\n}\r\n"],"names":[],"sourceRoot":""}
